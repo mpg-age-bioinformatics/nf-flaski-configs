@@ -91,7 +91,7 @@ workflow {
   }
 
   if ( 'image_folder' in params.keySet() ) {
-    image_folder=${params.image_folder}
+    image_folder="${params.image_folder}"
   } else {
     image_folder=""
   }
