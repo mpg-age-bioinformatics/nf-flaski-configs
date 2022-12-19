@@ -2,7 +2,7 @@
 
 ```
 LATEST_RELEASE=$(  curl --silent "https://api.github.com/repos/mpg-age-bioinformatics/nf-flaski-configs/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' )
-nextflow run mpg-age-bioinformatics/nf-flaski-configs -r ${LATEST_RELEASE} --raw ~/test_input --json ~/Downloads/20221213.160401.jesq89x2.RNAseq.json --out ~/test_output_flaski -profile local && \
+nextflow run mpg-age-bioinformatics/nf-flaski-configs -r ${LATEST_RELEASE} --raw ~/test_input --json ~/Downloads/20221213.160401.jesq89x2.RNAseq.json --out ~/test_output_flaski -profile local
 ```
 ___ 
 
