@@ -66,6 +66,12 @@ process parser {
     EXCout.save()
 
     json_out=c[json_file]
+
+    json_in=json.loads(json_out)
+    json_in=json_in["${params.run_type}"]
+    if "ftp" in list(json_in.keys()) :
+        json_out=json_out.replace("<ftp>",json_in["ftp"])
+
     json_out=json_out.replace("<path_to_raw_data>","${params.raw}")
     json_out=json_out.replace("<path_to_run_data>","${params.out}")
     json_out=json_out.replace("<your.david.registered@email.com>","${david_email}")
