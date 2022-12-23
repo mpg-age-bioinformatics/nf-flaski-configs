@@ -54,16 +54,18 @@ process parser {
     import pandas as pd
     with open("/flaski.json", "r") as f:
         c=json.load(f)
-    excel_file=[ s for s in list(c.keys()) if ".xlsx" in s ][0]
+    excel_files=[ s for s in list(c.keys()) if ".xlsx" in s ]
     json_file=[ s for s in list(c.keys()) if ".json" in s ][0]
 
-    excel_sheets=list(c[excel_file].keys())
+    for excel_file in excel_files:
+    
+        excel_sheets=list(c[excel_file].keys())
 
-    EXCout=pd.ExcelWriter(f"/workdir/{excel_file}")
-    for e in excel_sheets:
-        df=pd.read_json(c[excel_file][e])
-        df.to_excel(EXCout, e, index=None )
-    EXCout.save()
+        EXCout=pd.ExcelWriter(f"/workdir/{excel_file}")
+        for e in excel_sheets:
+            df=pd.read_json(c[excel_file][e])
+            df.to_excel(EXCout, e, index=None )
+        EXCout.save()
 
     json_out=c[json_file]
 
