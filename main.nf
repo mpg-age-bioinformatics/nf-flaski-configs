@@ -70,6 +70,9 @@ process parser {
     json_out=c[json_file]
 
     json_in=json_out["${params.run_type}"]
+
+    json_out=json.dumps(json_out)
+
     if "ftp" in list(json_in.keys()) :
         json_out=json_out.replace("<ftp>",json_in["ftp"])
 
